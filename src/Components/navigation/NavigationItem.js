@@ -2,8 +2,6 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-import styles from "./Navigation.module.css";
-
 const NavigationItem = ({
   name,
   path,
@@ -15,41 +13,52 @@ const NavigationItem = ({
   return (
     <>
       {!isPrivate && !isRestricted && (
-        <li className={styles.navItem}>
+        <li className='navItem'>
           <NavLink
-            className={styles.navLink}
-            activeClassName={styles.activeNavLink}
             to={path}
             exact={exact}
-          >
+            className='navLink'
+            activeClassName='activeNavLink'>
             {name}
           </NavLink>
         </li>
       )}
       {isPrivate && !isRestricted && isAuth && (
-        <li className={styles.navItem}>
+        <li className='navItem'>
           <NavLink
-            className={styles.navLink}
-            activeClassName={styles.activeNavLink}
             to={path}
             exact={exact}
-          >
+            className='navLink'
+            activeClassName='activeNavLink'>
             {name}
           </NavLink>
         </li>
       )}
       {!isPrivate && isRestricted && !isAuth && (
-        <li className={styles.navItem}>
+        <li className='navItem'>
           <NavLink
-            className={styles.navLink}
-            activeClassName={styles.activeNavLink}
             to={path}
             exact={exact}
-          >
+            className='navLink'
+            activeClassName='activeNavLink'>
             {name}
           </NavLink>
         </li>
       )}
+
+      {/* {((!isPrivate && !isRestricted) ||
+        (isPrivate && !isRestricted && isAuth) ||
+        (!isPrivate && isRestricted && !isAuth)) && (
+          <li className='navItem'>
+            <NavLink
+              to={path}
+              exact={exact}
+              className='navLink'
+              activeClassName='activeNavLink'>
+              {name}
+            </NavLink>
+          </li>
+        )} */}
     </>
   );
 };

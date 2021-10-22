@@ -9,7 +9,7 @@ import {
   signUpError,
   signUpRequest,
   signUpSuccess,
-} from "../auth/auth-actions";
+} from "./authActions";
 
 const authUserReducer = createReducer(null, {
   [signUpSuccess]: (_, action) => ({
@@ -47,6 +47,7 @@ const authLoaderReducer = createReducer(false, {
   [signOutRequest]: () => true,
   [signOutSuccess]: () => false,
   [signOutError]: () => false,
+  
 });
 
 const authErrorReducer = createReducer("", {

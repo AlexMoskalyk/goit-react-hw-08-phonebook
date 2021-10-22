@@ -47,7 +47,7 @@ const loaderReducer = createReducer(false, {
   [deleteContactsError]: () => false,
 });
 
-export default combineReducers({
+export const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
   error: errorReducer,

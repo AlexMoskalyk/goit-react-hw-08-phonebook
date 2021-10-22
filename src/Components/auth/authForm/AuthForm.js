@@ -16,44 +16,44 @@ const AuthForm = ({ signUp, signIn }) => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    location.pathname === "/register"
+    location.pathname === "/signup"
       ? signUp({ email, password, displayName })
       : signIn({ email, password });
   };
 
   return (
     <form onSubmit={onHandleSubmit}>
-      {location.pathname === "/register" && (
+      {location.pathname === "/signup" && (
         <label>
           Name
           <input
-            type="text"
+            type='text'
             value={displayName}
             onChange={onHandleChange}
-            name="displayName"
+            name='displayName'
           />
         </label>
       )}
       <label>
         Email
         <input
-          type="text"
+          type='text'
           value={email}
           onChange={onHandleChange}
-          name="email"
+          name='email'
         />
       </label>
       <label>
         Password
         <input
-          type="text"
+          type='text'
           value={password}
           onChange={onHandleChange}
-          name="password"
+          name='password'
         />
       </label>
-      <button type="submit">
-        {location.pathname === "/register" ? "Sign up" : "Sign in"}
+      <button type='submit'>
+        {location.pathname === "/signup" ? "Sign up" : "Sign in"}
       </button>
     </form>
   );

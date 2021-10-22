@@ -1,5 +1,4 @@
 import axios from "axios";
-import { SIGNIN_URL, SIGNUP_URL } from "../../services/api";
 import {
   signInError,
   signInRequest,
@@ -7,7 +6,8 @@ import {
   signUpError,
   signUpRequest,
   signUpSuccess,
-} from "../auth/auth-actions";
+} from "./authActions";
+import { SIGNUP_URL, SIGNIN_URL } from "../../services/api";
 
 const signUpOperation = (user) => async (dispatch) => {
   dispatch(signUpRequest());

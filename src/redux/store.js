@@ -1,3 +1,9 @@
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { authReducer } from "./auth/authReducers";
+
+import { contactsReducer } from "./contacts/contacts-reducer";
+import storage from "redux-persist/lib/storage";
+
 import {
   persistStore,
   persistReducer,
@@ -8,11 +14,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
-
-import contactsReducer from "./contacts/contacts-reducer";
-import { authReducer } from "./auth/auth-reducers";
 
 const authConfig = {
   key: "user",
@@ -27,7 +28,7 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV === "development",
+  // devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -36,8 +37,5 @@ const store = configureStore({
     }),
 });
 
-const persistor = persistStore(store);
-
-const data = { store, persistor };
-
-export default data;
+export const persistor = persistStore(store);
+export default store;

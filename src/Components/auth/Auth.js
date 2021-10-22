@@ -7,8 +7,8 @@ import {
 import {
   signInOperation,
   signUpOperation,
-} from "../../redux/auth/auth-operations";
-// import { errorSelector, loaderSelector } from "../../redux/auth/auth-selector";
+} from "../../redux/auth/authOperations";
+// import { errorSelector, loaderSelector } from "../../redux/auth/authSelectors";
 import AuthForm from "./authForm/AuthForm";
 
 const Auth = () => {

@@ -1,21 +1,20 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { signOutSuccess } from "../../redux/auth/auth-actions";
-import { isAuthSelector } from "../../redux/auth/auth-selector";
 import { mainRoutes } from "../../routes/mainRoutes";
-
-import styles from "./Navigation.module.css";
-import NavigationItem from "./navigationItem/NavigationItem";
+import NavigationItem from "./NavigationItem";
+import { NavigationContainer } from "./NavigationStyled";
+import { isAuthSelector } from "../../redux/auth/authSelectors";
+import { useDispatch, useSelector } from "react-redux";
+import { signOutSuccess } from "../../redux/auth/authActions";
 
 const Navigation = ({ routes = mainRoutes }) => {
-  // const isAuth = useSelector(isAuthSelector);
-  const isAuth = false;
+  const isAuth = useSelector(isAuthSelector);
+  // const isAuth = false;
   const dispatch = useDispatch();
   const signOut = () => dispatch(signOutSuccess());
+
   return (
-    <nav>
-      <ul className={styles.navList}>
+    <NavigationContainer>
+      <ul className='navList'>
         {routes.map(({ name, path, exact, isPrivate, isRestricted }) => (
           <NavigationItem
             key={path}
@@ -28,12 +27,12 @@ const Navigation = ({ routes = mainRoutes }) => {
           />
         ))}
         {isAuth && (
-          <li className={styles.navItem} onClick={signOut}>
-            <span className={styles.navLink}>Sign out</span>
+          <li className='navItem' onClick={signOut}>
+            <span className='navLink'>Sign Out</span>
           </li>
         )}
       </ul>
-    </nav>
+    </NavigationContainer>
   );
 };
 

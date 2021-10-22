@@ -1,37 +1,44 @@
-import AuthPage from "../pages/AuthPage";
-import ContactsPage from "../pages/ContactsPage";
-import HomePage from "../pages/HomePage";
+import { lazy } from "react";
 
 export const mainRoutes = [
   {
     name: "Home",
     path: "/",
     exact: true,
-    component: HomePage,
+    component: lazy(() =>
+      import("../pages/HomePage" /* webpackChunkName:"HomePage" */)
+    ),
     isPrivate: false,
     isRestricted: false,
   },
+
   {
     name: "Contacts",
     path: "/contacts",
     exact: true,
-    component: ContactsPage,
+    component: lazy(() =>
+      import("../pages/ContactsPage" /* webpackChunkName:"ContactsPage" */)
+    ),
     isPrivate: true,
     isRestricted: false,
   },
   {
     name: "Sign Up",
-    path: "/register",
+    path: "/signup",
     exact: true,
-    component: AuthPage,
+    component: lazy(() =>
+      import("../pages/AuthPage" /* webpackChunkName:"AuthPage" */)
+    ),
     isPrivate: false,
     isRestricted: true,
   },
   {
-    name: "Sign In",
-    path: "/login",
+    name: "Sign in",
+    path: "/signin",
     exact: true,
-    component: AuthPage,
+    component: lazy(() =>
+      import("../pages/AuthPage" /* webpackChunkName:"AuthPage" */)
+    ),
     isPrivate: false,
     isRestricted: true,
   },

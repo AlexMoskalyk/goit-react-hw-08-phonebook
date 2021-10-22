@@ -1,8 +1,7 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
-const PublicRoute = ({ path, exact, component, isRestricted, isAuth }) => {
-  console.log(isAuth);
+const PublicRoute = ({ path, exact, component, isAuth, isRestricted }) => {
   return isAuth && isRestricted ? (
     <Redirect to="/contacts" />
   ) : (
